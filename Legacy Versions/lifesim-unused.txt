@@ -1,0 +1,218 @@
+
+#	rects = []
+		#	for component in self.components:
+		#		if component.shown and component.onscreen:
+		#			rects.append(component.rect.inflate(component.width/8, component.height/8))
+		#	rects.extend(player.world.getEdges())
+		#	for block in self.blocks:
+		#		rects.append(block.truerect)
+		#	pygame.display.update(rects)
+		
+		
+class menu(object):
+    def __init__(self, name, width, height, color, textcolor, items, prices, descriptions):
+        self.name = name
+        self.screenX = 0
+        self.screenY = 0
+        self.width = width
+        self.height = height
+        self.color = color
+        self.textcolor = textcolor
+        self.items = items
+        self.prices = prices
+        self.descriptions = descriptions
+    def draw(self):
+        self.screenX = 0
+        self.screenY = 0
+        pygame.draw.rect(screen, self.color, (self.screenX, self.screenY, screenwidth, self.height))
+        for i in range(len(self.items)):
+            textsize = 22
+            write(screen, 'font.ttf', textsize, self.screenX, self.screenY+int(self.height*0.125), self.items[i] + ' (Press ' + str(i+1) + ' to purchase)', self.textcolor)
+            write(screen, 'font.ttf', textsize, self.screenX, self.screenY+(self.height*0.7), '$' + str(self.prices[i]), self.textcolor)
+            textsize = 16
+            write(screen, 'font.ttf', textsize, self.screenX, self.screenY+int(self.height*0.45), self.descriptions[i] + str(i+1), self.textcolor)
+        #self.screenX += 150
+        self.screenX += screenwidth/(len(self.items))
+    #def checkpurchase(self):
+      #if (keys[i] == keys[]
+'''
+shopmenu = menu('Shop Menu', screenwidth, 60, (100, 100, 100), (255, 255, 255),\
+['Chips', 'Medicine', 'Sword', 'Shield', 'Time Machine'],\
+[10, 50, 100, 1000, 5000],\
+('energy +100 and weight +10 when consumed', 'Health +200 when consumed', 'Health +500 when consumed',\
+'Deals 50 damage.', 'Allows you to change your age with + and - keys.'\
+))
+'''
+
+def displayInventory():
+    for items in inventory:
+        pygame.draw.rect(screen, (200, 200, 200), (x*(screenwidth/11)+100, 100, 50, 50))
+
+
+
+
+
+
+def manageCharacterStats():
+	player.manageStats()
+	#cop1.manageStats()
+	#cop2.manageStats()
+	#cop3.manageStats()
+
+
+
+		#if self.world.miniature:
+			#speedmultiplier *= 0.7
+
+		#self.radius = int(self.weight*0.15)+8
+
+
+
+
+
+'''
+Worlds = (
+	town,
+	house_interior,
+	shop_interior,
+	city,
+	heck,
+	cheese_land,
+	cave_land,
+	daddyland#,
+	#island,
+	#jungle,
+	#lake
+)'''
+
+
+#cop1 = character('Cop1', 1000, -420, 18, (50, 100, 255))
+#cop2 = character('Cop2', 1018, -468, 18, (40, 90, 245))
+#cop3 = character('Cop3', 1032, -402, 18, (30, 80, 235 ))
+
+
+
+'''
+Characters = (
+player,
+#NPCs
+#cop1, cop2, cop3,
+)'''
+
+
+		if (pond  in self.touching or ocean  in self.touching or lava in self.touching):
+			#self.swimming = True
+			if (lava in self.touching):
+				self.health -= 5
+
+
+		#if (cash in self.touching or cash2 in self.touching):
+			#self.money += 100
+			#cash.randPos()
+		#if (quarter in self.touching):
+			#self.money += 10
+			#quarter.randPos()
+		#if (credit_card in self.touching):
+			#self.money += randint(1, 10000)
+			#credit_card.randPos()
+
+
+'''
+Components = (
+# Town components
+h_sidewalk, v_sidewalk, v_road, h_road,
+pond_beach, pond,
+ocean_beach, ocean,
+volcano, lava,
+cave,
+house, restaurant, gym, school, office, hospital, shop,
+cheese_hut,
+cash,
+# House components
+house_door,
+bed,
+penny,
+# Shop components
+shop_door,
+
+# City Components
+#city_roads,
+bank,# apartment, library, university,
+
+# Cave components
+cave_exit
+#cave_gold
+
+)'''
+
+
+# unused in the main scope (moved to game class)
+def drawgame():
+	draw(player.currentworld)
+	draw(Component.components)
+	draw(Block.blocks)
+	draw(player)
+	displayStats()
+	game.displayMessages()
+
+def loopGame():
+	loop(player)
+	loop(Component.components)
+	loop(Block.blocks)
+
+
+def debug(do):
+	if (do):
+		#print(player.touching)
+		print(player.onground)
+		print(player.speed)
+		
+
+#h_pavement = Component('Horizontal Pavement', 0, 0, city.width, 300, (185, 185, 185), city, False, False)
+#v_pavement = Component('Horizontal Pavement', 0, 0, 300, city.height, (185, 185, 185), city, False, False)
+
+		
+		'Time Machine': {
+		'Slot': 0, 'Type': 'Item', 'Amount': 1, 'Depletable': False,
+		}
+		
+		
+					if self.selected == 'Time Machine':
+				if game.BUTTON1:
+					self.age += 0.25
+				if game.BUTTON2:
+					self.age -= 0.25
+					
+								if self.selected == 'Chips':
+						self.energy += 10
+						self.depleteItem('Chips')
+					if self.selected == 'Energy Drink':
+						self.energy += 100
+						self.depleteItem('Energy Drink')
+						
+		#if (self.name == 'X' or self.name == 'Y'):##stat /= 10;
+		#if (self.name == 'X'): # flips x because that's backwards for some reason
+			#stat = -stat
+			
+
+
+	def getEdges(self):
+
+		width = self.width
+		height = self.height
+		
+		wallwidth = 15
+		rects = []
+		
+		rects.append(pygame.Rect(self.screenX-wallwidth, self.screenY-wallwidth, wallwidth*2, height+(wallwidth*2))) # Left
+		rects.append(pygame.Rect(self.screenX-wallwidth, self.screenY-wallwidth, width+(wallwidth*2), wallwidth*2)) # Top
+		rects.append(pygame.Rect(self.screenX-wallwidth, self.screenY+height-wallwidth, width+(wallwidth*2), wallwidth*2)) # Bottom
+		rects.append(pygame.Rect(self.screenX+width-wallwidth, self.screenY-wallwidth, wallwidth*2, height+(wallwidth*2))) # Right
+		
+		for rect in rects:
+			if not rect.colliderect(game.screen.get_rect()):
+				rects.remove(rect)
+		
+		#for rect in rects:
+		#	pygame.draw.rect(game.screen, (255, 255, 255), rect, 5)
+		
