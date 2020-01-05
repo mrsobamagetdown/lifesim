@@ -4,10 +4,11 @@ import math
 
 from globfuns import *
 
-class World:
+game = None
+player = None
 	
-	game = None
-	player = None
+	
+class World:
 	
 	worlds = []
 	
@@ -31,20 +32,17 @@ class World:
 		
 	
 	def update(self):
-		game = World.game
-		player = World.player
-		
 		self.screenX = player.x - (self.width/2) + (game.width/2)
 		self.screenY = player.y - (self.height/2) + (game.height/2)
 		self.rect = screenRect(self)
-		# Create a rectangle that contains all positions of the player where the edge of the screen is not visible.
-		# When player is inside, the self's edge isn't drawn to increase framerate.
+		# Create a rectangle that contains all positions of the player where the edge of the world is not visible.
+		# When player is inside rectangle, the world's edge isn't drawn to increase framerate.
 		self.innerrect = self.rect.copy().inflate((-game.width-player.width, -game.height-player.height))
 		
 	
 	def draw(self):
-		screen = World.game.screen
-		if self.outercolor and not World.player.rect.colliderect(self.innerrect):
+		screen = game.screen
+		if self.outercolor and not player.rect.colliderect(self.innerrect):
 			screen.fill(self.outercolor)
 			pygame.draw.rect(screen, self.color, self.rect)
 		else:
@@ -71,7 +69,7 @@ heck = World('Heck', 4500, 4500, (100, 35, 30), (255, 150, 0), outerdamage=6, ou
 cheeseland = World('Cheese Land', 3500, 3500, (255, 210, 75), (255, 175, 100))
 caveland = World('Cave Land', 3000, 1000, (90, 90, 90), (25, 25, 25), walled=True)
 daddyland = World('Daddyland', 6900, 4200, (255, 195, 240), (255, 50, 170), outerspeed=0.1, walled=True)
-labinterior = World('Lab Interior', 1500, 1500, (120, 120, 120), walled=True)
+labinterior = World('Lab Interior', 1500, 1500, (120, 120, 120), (220, 220, 220), walled=True)
 desktop = World('Desktop', 1500, 1500, (0, 0, 0), (100, 100, 100), walled=True)
 thinkplains = World('Thinkplains', 5000, 5000, (0, 0, 0), walled=True)
 

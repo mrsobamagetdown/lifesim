@@ -8,6 +8,9 @@ from globfuns import *
 game = None
 player = None
 
+drawarrow = False
+drawfinger = False
+
 
 class Image:
 	
@@ -24,14 +27,13 @@ class Image:
 		game.screen.blit(self.image, (x, y))
 		
 
-pointer = Image('pointer', 50, 50)
+arrow = Image('arrow', 50, 50)
 finger = Image('finger', 50, 50)
 target = Image('target', 65, 65)
 
 
 
 def drawEffects():
-	
 	pass
 	
 
@@ -46,10 +48,11 @@ def drawCursor():
 				x = player.x - roundTo((-game.tileX + (tilesize/2)), tilesize/2) + (game.width/2)
 				y = player.y - roundTo((game.tileY + (tilesize/2)), tilesize/2) + (game.height/2)
 				pygame.draw.rect(game.screen, (0, 0, 0), (x, y, tilesize, tilesize), thickness)
-				
-			if (player.getSelectedVal('Type') == 'Block' or game.drawcursor) and not game.drawfinger:
-				pointer.draw(game.mouseX, game.mouseY)
-			if game.drawfinger:
+			
+			if drawfinger:
+				if (player.getSelectedVal('Type') == 'Block' or drawarrow):
+					arrow.draw(game.mouseX, game.mouseY)
+			elif drawfinger:
 				finger.draw(game.mouseX, game.mouseY)
 				
 	

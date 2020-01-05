@@ -3,15 +3,15 @@ import random
 import math
 
 from globfuns import *
-from componentclass import *
-
+from component import *
 
 pygame.init()
 
+
+game = None
+player = None
+
 class Block:
-	
-	game = None
-	player = None
 	
 	blocks = []
 	is3D = True
@@ -93,9 +93,6 @@ class Block:
 		
 	
 	def update(self):
-		game = Block.game
-		player = Block.player
-		
 		self.screenX = player.x+(self.x-(self.width/2))+(game.width/2)
 		self.screenY = player.y-(self.y+(self.height/2))+(game.height/2)
 		self.rect = screenRect(self)
@@ -108,15 +105,14 @@ class Block:
 		
 	
 	def collision(self):
-		if self.rect.colliderect(Block.player.rect):
-			self.player.touching.add(self)
+		if self.rect.colliderect(player.rect):
+			player.touching.add(self)
 		else:
-			self.player.touching.discard(self)
+			player.touching.discard(self)
 		
 	
 	def draw(self):
-		screen = self.game.screen
 		if not self.deleted:
-			pygame.draw.rect(screen, self.color2, (self.screenX, self.screenY-self.tallness, self.width, self.height+self.tallness))
-			pygame.draw.rect(screen, self.color1, (self.screenX + (Block.padding/2), self.screenY + (Block.padding/2)-self.tallness, self.width-Block.padding, self.height-Block.padding))
+			pygame.draw.rect(game.screen, self.color2, (self.screenX, self.screenY-self.tallness, self.width, self.height+self.tallness))
+			pygame.draw.rect(game.screen, self.color1, (self.screenX + (Block.padding/2), self.screenY + (Block.padding/2)-self.tallness, self.width-Block.padding, self.height-Block.padding))
 	

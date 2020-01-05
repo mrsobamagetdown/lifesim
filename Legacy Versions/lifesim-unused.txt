@@ -213,6 +213,27 @@ def debug(do):
 			if not rect.colliderect(game.screen.get_rect()):
 				rects.remove(rect)
 		
+		
 		#for rect in rects:
 		#	pygame.draw.rect(game.screen, (255, 255, 255), rect, 5)
 		
+boldness = 2
+					for angle in range(0, 360, 30):
+						x = boldness*(math.sin(angle)) + stat.x
+						y = boldness*(math.cos(angle)) + stat.y
+						write(cls.game.screen, 'font.ttf', Stat.textsize, x, y, stat.stat, (50, 50, 50))
+
+
+
+# Reconfigure procedural init params first
+'''
+from proceduralgen import generation
+#generator = generation()
+
+for i in range(5):
+	newworld = World(*generator.genWorld())
+for i in range(40):
+	newcomponent = Component(*generator.genComponent())
+	print(newcomponent.rect)
+	print(newcomponent.world)
+'''

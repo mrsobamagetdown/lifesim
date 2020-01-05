@@ -40,7 +40,7 @@ def write(surface, fontFace, size, x, y, text, color, center=False):
 	if size in fonts:
 		Font = fonts[size]
 	else:
-		Font = pygame.font.SysFont(fontFace, size)
+		Font = pygame.font.Font(fontFace, size)
 		fonts[size] = Font
 	text = Font.render(text, 1, color)
 	
