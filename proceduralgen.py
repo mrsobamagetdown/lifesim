@@ -1,7 +1,5 @@
 #import lifesim
 import random
-from random_word import RandomWords
-randWord = RandomWords()
 
 # TODO: Reconfigure init params to v7
 

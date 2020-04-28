@@ -182,7 +182,7 @@ hstreet = Component('Horizontal Street', 0, 0, city.width, 300, (50, 50, 50), ci
 vstreet = Component('Vertical Street', 0, 0, 300, city.height, (50, 50, 50), city)
 bank = Component('Bank', 700, 600, 700, 500, (25, 150, 75), city, True, command='player.money*=1.12; player.happiness-=player.money/20; player.energy-=0.5')
 apartment = Component('Apartment', -600, -700,  500, 700, apartmentinterior.outercolor, city, True)
-university = Component('University', -650, 650, 600, 600, (220, 190, 120), city, True,  condition='player.age >= 18 && player.canPay(1)', command='player.money-=1; player.intelligence*=1.2; player.happiness-=0.5; player.energy-=0.5')
+university = Component('University', -650, 650, 600, 600, (220, 190, 120), city, True,  condition='player.age >= 18 and player.canPay(1)', command='player.money-=1; player.intelligence*=1.2; player.happiness-=0.5; player.energy-=0.5')
 citymetro = Component('Metro - $100', 600, 2200, 500, 600, (100,100, 100), city, True, tp=townmetro, condition='player.canPay(100)', interactive=True, command='player.money-=0.5')
 museum = Component('Museum', 1550, 650, 600, 600, (10, 10, 10), city, True, condition='player.canPay()', command='player.happiness += 0.5; player.money-=0.75')
 laboratory = Component('Laboratory', 1200, -625, 500, 550, (250, 250, 250), city, True, textcolor=(0, 0, 0))

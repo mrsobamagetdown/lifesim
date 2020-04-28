@@ -200,8 +200,6 @@ class Game(object):
 			if self.keys[pygame.K_3]:
 				Block.is3D = not Block.is3D
 				Block.sortBlocks()
-			if self.keys[pygame.K_4]:
-				Component.showname = not Component.showname
 			if self.keys[pygame.K_5]:
 				player.elliptical = not player.elliptical
 		if self.SHIFT or self.keys[pygame.K_KP0]:
